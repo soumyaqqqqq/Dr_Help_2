@@ -1,22 +1,21 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+import dotenv from 'dotenv'; // Keep dotenv here if it's needed for independent execution, though usually managed at entry
+// However, since we want specific patterns, let's assume dotenv is loaded at app entry, 
+// BUT for safety in independent modules or tests, we might check process.env.
+// The plan said "Ensure dotenv is initialized only once at the entry point".
+// So I will NOT import dotenv here, assuming it's loaded in index.js
 
-// MongoDB connection function
 const connectDB = async () => {
   try {
-    // You'll need to add your MongoDB URI to .env file
     const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/painsense';
     
-    await mongoose.connect(MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(MONGO_URI);
     
     console.log('MongoDB connected successfully');
   } catch (error) {
     console.error('MongoDB connection failed:', error.message);
-    // Exit process with failure
     process.exit(1);
   }
 };
 
-module.exports = connectDB;
+export default connectDB;

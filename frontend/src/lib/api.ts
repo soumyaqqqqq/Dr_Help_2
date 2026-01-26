@@ -6,14 +6,14 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/a
 // Helper function for making API requests
 export async function apiRequest(endpoint: string, options = {}) {
   const url = `${API_BASE_URL}${endpoint}`;
-  
+
   console.log(`API Request to: ${url}`, {
     headers: {
       ...getAuthHeader(),
       ...(options as any).headers,
     }
   });
-  
+
   try {
     const response = await fetch(url, {
       ...options,
@@ -51,7 +51,7 @@ function getAuthHeader() {
       const token = localStorage.getItem('token');
       if (token) {
         console.log('Found auth token');
-        return { 'Authorization': `Bearer ${token}` };
+        return { 'x-auth-token': token };
       } else {
         console.log('No auth token found in localStorage');
         return {};
@@ -87,13 +87,13 @@ export const authAPI = {
       method: 'POST',
       body: JSON.stringify({ email, password }),
     });
-    
+
     if (data.token) {
       // Store token in localStorage
       localStorage.setItem('token', data.token);
       localStorage.setItem('userRole', data.role);
     }
-    
+
     return data;
   },
 
@@ -145,7 +145,7 @@ export const doctorAPI = {
   async getPatientHistory(patientId: string) {
     return apiRequest(`/doctors/patients/${patientId}/history`);
   },
-  
+
   // Update a patient's medical information
   async updatePatient(patientId: string, patientData: any) {
     return apiRequest(`/doctors/patients/${patientId}`, {
