@@ -22,11 +22,11 @@ import {
 } from '@/components/ui/dialog'
 
 type BlogPost = {
-  title: string
-  description: string
-  date: string
-  author: string
-  content: string
+  readonly title: string
+  readonly description: string
+  readonly date: string
+  readonly author: string
+  readonly content: string
 }
 
 export default function DoctorBlogPage() {
@@ -39,7 +39,7 @@ export default function DoctorBlogPage() {
   useEffect(() => {
     // Store doctor context
     localStorage.setItem('userRole', 'doctor')
-    
+
     // Fetch blog posts
     const fetchPosts = async () => {
       try {
@@ -52,7 +52,7 @@ export default function DoctorBlogPage() {
         setLoading(false)
       }
     }
-    
+
     fetchPosts()
   }, [])
 
@@ -61,7 +61,7 @@ export default function DoctorBlogPage() {
     setSelectedPost(post)
     setIsDialogOpen(true)
   }
-  
+
   if (loading) {
     return (
       <Card className="w-full">
@@ -79,7 +79,7 @@ export default function DoctorBlogPage() {
         <p>Current path: {pathname}</p>
         <p>Context: Doctor</p>
       </div>
-      
+
       <header className="text-center">
         <h1 className="text-4xl md:text-5xl">Insights & Articles</h1>
         <p className="mx-auto mt-2 max-w-xl text-lg text-muted-foreground">
@@ -89,9 +89,9 @@ export default function DoctorBlogPage() {
       </header>
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {posts.map((post, index) => (
+        {posts.map((post) => (
           <Card
-            key={index}
+            key={post.title}
             className="flex flex-col transition-transform duration-300 hover:scale-105 hover:shadow-xl"
           >
             <CardHeader>
@@ -104,8 +104,8 @@ export default function DoctorBlogPage() {
               <p>{post.description}</p>
             </CardContent>
             <CardFooter>
-              <Button 
-                variant="link" 
+              <Button
+                variant="link"
                 className="p-0"
                 onClick={() => handleReadMore(post)}
               >
@@ -128,7 +128,7 @@ export default function DoctorBlogPage() {
                   <span>{format(new Date(selectedPost.date), 'MMMM d, yyyy')}</span>
                 </DialogDescription>
               </DialogHeader>
-              
+
               <div className="mt-4 space-y-4">
                 {selectedPost.content.split('\n\n').map((paragraph, i) => (
                   <p key={i} className="leading-relaxed">
@@ -136,7 +136,7 @@ export default function DoctorBlogPage() {
                   </p>
                 ))}
               </div>
-              
+
               <DialogFooter className="mt-6">
                 <Button onClick={() => setIsDialogOpen(false)}>Close</Button>
               </DialogFooter>

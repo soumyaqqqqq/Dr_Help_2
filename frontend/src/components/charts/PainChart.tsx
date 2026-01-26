@@ -37,7 +37,7 @@ function formatDate(dateString: string): string {
   const now = new Date();
   const diffTime = Math.abs(now.getTime() - date.getTime());
   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-  
+
   if (diffDays === 0) {
     return 'Today';
   } else if (diffDays === 1) {
@@ -56,13 +56,13 @@ type PainRecord = {
 }
 
 interface PainChartProps {
-  painHistory?: PainRecord[];
-  currentPainLevel?: number;
+  readonly painHistory?: PainRecord[];
+  readonly currentPainLevel?: number;
 }
 
 export default function PainChart({ painHistory, currentPainLevel }: PainChartProps) {
   const [chartData, setChartData] = useState(defaultData);
-  
+
   useEffect(() => {
     // Check if pain history exists and has content
     if (painHistory && Array.isArray(painHistory) && painHistory.length > 0) {
@@ -74,7 +74,7 @@ export default function PainChart({ painHistory, currentPainLevel }: PainChartPr
             date: formatDate(record.timestamp),
             score: record.score
           }));
-        
+
         // Add current pain level if provided
         if (currentPainLevel !== undefined) {
           formattedData.push({
@@ -82,7 +82,7 @@ export default function PainChart({ painHistory, currentPainLevel }: PainChartPr
             score: currentPainLevel
           });
         }
-        
+
         if (formattedData.length > 0) {
           setChartData(formattedData);
           return;
@@ -91,7 +91,7 @@ export default function PainChart({ painHistory, currentPainLevel }: PainChartPr
         console.error('Error processing pain history:', error);
       }
     }
-    
+
     // If we got here, either there's no valid pain history or an error occurred
     // Create a default chart with the current pain level
     if (currentPainLevel !== undefined) {

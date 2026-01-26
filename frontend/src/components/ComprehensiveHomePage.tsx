@@ -2,23 +2,20 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { 
-  ArrowRight, 
-  Heart, 
-  Shield, 
-  Zap, 
-  Users, 
-  Activity, 
-  Award,
+import {
+  ArrowRight,
+  Heart,
+  Shield,
+  Zap,
+  Users,
+  Activity,
   ChevronDown,
   Play,
   Star,
   CheckCircle,
-  TrendingUp,
   Brain,
   Monitor,
   Database,
-  Clock,
   Target,
   Eye,
   UserCheck,
@@ -36,8 +33,8 @@ import { useState } from 'react';
 // Animation variants
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
     transition: { duration: 0.6, ease: "easeOut" }
   }
@@ -54,9 +51,9 @@ const staggerContainer = {
 };
 
 const scaleOnHover = {
-  hover: { 
-    scale: 1.05, 
-    transition: { duration: 0.2 } 
+  hover: {
+    scale: 1.05,
+    transition: { duration: 0.2 }
   }
 };
 
@@ -197,7 +194,7 @@ export function ComprehensiveHomePage() {
   const [howItWorksRef, howItWorksInView] = useAnimationInView();
   const [statsRef, statsInView] = useAnimationInView();
   const [testimonialsRef, testimonialsInView] = useAnimationInView();
-  
+
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const nextTestimonial = () => {
@@ -211,7 +208,7 @@ export function ComprehensiveHomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Hero Section */}
-      <section 
+      <section
         ref={heroRef}
         className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-100 via-white to-gray-50"
       >
@@ -275,8 +272,8 @@ export function ComprehensiveHomePage() {
                 variants={fadeInUp}
                 className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed"
               >
-                Revolutionary AI platform that predicts, monitors, and manages cancer pain 
-                with unprecedented accuracy. Empowering patients and healthcare providers 
+                Revolutionary AI platform that predicts, monitors, and manages cancer pain
+                with unprecedented accuracy. Empowering patients and healthcare providers
                 with intelligent insights for better outcomes.
               </motion.p>
 
@@ -285,19 +282,19 @@ export function ComprehensiveHomePage() {
                 className="flex flex-col sm:flex-row gap-4 mb-8"
               >
                 <motion.div whileHover="hover" variants={scaleOnHover}>
-                  <Button 
-                    size="lg" 
+                  <Button
+                    size="lg"
                     className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-8 py-4 text-lg rounded-xl shadow-lg group"
                   >
                     Get Started Today
                     <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </motion.div>
-                
+
                 <motion.div whileHover="hover" variants={scaleOnHover}>
-                  <Button 
-                    variant="outline" 
-                    size="lg" 
+                  <Button
+                    variant="outline"
+                    size="lg"
                     className="px-8 py-4 text-lg rounded-xl border-2 border-gray-300 hover:border-gray-400 group bg-white shadow-lg"
                   >
                     <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
@@ -336,12 +333,12 @@ export function ComprehensiveHomePage() {
                         <Heart className="w-10 h-10 text-white" />
                       </div>
                       <h3 className="text-2xl font-bold text-gray-900">AI-Powered Healthcare</h3>
-                      
+
                       <div className="space-y-4">
                         <p className="text-gray-600">
                           Transforming cancer pain management with intelligent predictions and personalized care.
                         </p>
-                        
+
                         <div className="grid grid-cols-2 gap-4 mt-6">
                           <div className="text-center p-4 bg-gray-50 rounded-xl">
                             <div className="text-2xl font-bold text-green-600">95%</div>
@@ -352,7 +349,7 @@ export function ComprehensiveHomePage() {
                             <div className="text-xs text-gray-500">Users</div>
                           </div>
                         </div>
-                        
+
                         <Button className="w-full bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-xl">
                           Get Started
                         </Button>
@@ -388,12 +385,12 @@ export function ComprehensiveHomePage() {
               About Our Platform
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-xl text-gray-700 max-w-3xl mx-auto">
-              We're on a mission to revolutionize cancer pain management through artificial intelligence, 
+              We're on a mission to revolutionize cancer pain management through artificial intelligence,
               providing healthcare providers and patients with the tools they need for better outcomes.
             </motion.p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             variants={staggerContainer}
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
           >
@@ -437,7 +434,7 @@ export function ComprehensiveHomePage() {
             </motion.p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             variants={staggerContainer}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
@@ -485,20 +482,19 @@ export function ComprehensiveHomePage() {
             </motion.p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             variants={staggerContainer}
             className="relative"
           >
             {/* Timeline */}
             <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-green-200 to-emerald-200"></div>
-            
+
             {howItWorksSteps.map((step, index) => (
               <motion.div
                 key={step.step}
                 variants={fadeInUp}
-                className={`relative grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16 items-center ${
-                  index % 2 === 0 ? '' : 'lg:grid-flow-col-dense'
-                }`}
+                className={`relative grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16 items-center ${index % 2 === 0 ? '' : 'lg:grid-flow-col-dense'
+                  }`}
               >
                 {/* Step Content */}
                 <div className={`${index % 2 === 0 ? 'lg:text-right lg:pr-12' : 'lg:pl-12'}`}>
@@ -548,7 +544,7 @@ export function ComprehensiveHomePage() {
             </motion.p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             variants={staggerContainer}
             className="grid grid-cols-2 md:grid-cols-4 gap-8"
           >
@@ -558,7 +554,7 @@ export function ComprehensiveHomePage() {
                 variants={fadeInUp}
                 whileHover="hover"
               >
-                <motion.div 
+                <motion.div
                   variants={scaleOnHover}
                   className="text-center bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-white/20 hover:bg-white/20 transition-all duration-300"
                 >
@@ -591,13 +587,13 @@ export function ComprehensiveHomePage() {
             </motion.p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             variants={fadeInUp}
             className="relative max-w-4xl mx-auto"
           >
             {/* Testimonial Carousel */}
             <div className="overflow-hidden">
-              <motion.div 
+              <motion.div
                 className="flex transition-transform duration-500"
                 style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
               >
@@ -640,19 +636,18 @@ export function ComprehensiveHomePage() {
               >
                 <ChevronLeft className="w-5 h-5" />
               </Button>
-              
+
               <div className="flex space-x-2">
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentTestimonial(index)}
-                    className={`w-3 h-3 rounded-full transition-all ${
-                      index === currentTestimonial ? 'bg-green-500' : 'bg-gray-300'
-                    }`}
+                    className={`w-3 h-3 rounded-full transition-all ${index === currentTestimonial ? 'bg-green-500' : 'bg-gray-300'
+                      }`}
                   />
                 ))}
               </div>
-              
+
               <Button
                 variant="outline"
                 size="sm"
@@ -694,25 +689,25 @@ export function ComprehensiveHomePage() {
               Get Started Today
             </h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Join thousands of healthcare providers and patients who are already experiencing 
+              Join thousands of healthcare providers and patients who are already experiencing
               better outcomes with our AI-powered platform.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
               <motion.div whileHover="hover" variants={scaleOnHover}>
-                <Button 
-                  size="lg" 
+                <Button
+                  size="lg"
                   className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white px-12 py-4 text-lg rounded-xl shadow-2xl group"
                 >
                   Start Free Trial
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </motion.div>
-              
+
               <motion.div whileHover="hover" variants={scaleOnHover}>
-                <Button 
-                  variant="outline" 
-                  size="lg" 
+                <Button
+                  variant="outline"
+                  size="lg"
                   className="px-12 py-4 text-lg rounded-xl border-2 border-white text-white hover:bg-white hover:text-gray-900 shadow-2xl"
                 >
                   Schedule Demo

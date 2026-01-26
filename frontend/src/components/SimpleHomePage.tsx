@@ -3,23 +3,20 @@
 import { motion } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
-import { 
-  ArrowRight, 
-  Heart, 
-  Shield, 
-  Zap, 
-  Users, 
-  Activity, 
-  Award,
+import {
+  ArrowRight,
+  Heart,
+  Shield,
+  Zap,
+  Users,
+  Activity,
   ChevronDown,
   Play,
   Star,
   CheckCircle,
-  TrendingUp,
   Brain,
   Monitor,
   Database,
-  Clock,
   Target,
   Eye,
   UserCheck,
@@ -36,8 +33,8 @@ import { Card, CardContent } from '@/components/ui/card';
 // Animation variants for Framer Motion
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
     transition: { duration: 0.6, ease: "easeOut" }
   }
@@ -58,7 +55,7 @@ export function SimpleHomePage() {
   const [mounted, setMounted] = useState(false);
   const [dataLoaded, setDataLoaded] = useState(false);
   const { theme } = useTheme();
-  
+
   // Move data arrays inside component to ensure they're available
   const [aboutCards] = useState([
     {
@@ -215,7 +212,7 @@ export function SimpleHomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       {/* Hero Section */}
-      <motion.section 
+      <motion.section
         className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-100 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
         initial="hidden"
         animate="visible"
@@ -276,26 +273,26 @@ export function SimpleHomePage() {
                 className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed"
                 variants={fadeInUp}
               >
-                Revolutionary AI platform that predicts, monitors, and manages cancer pain 
-                with unprecedented accuracy. Empowering patients and healthcare providers 
+                Revolutionary AI platform that predicts, monitors, and manages cancer pain
+                with unprecedented accuracy. Empowering patients and healthcare providers
                 with intelligent insights for better outcomes.
               </motion.p>
 
-              <motion.div 
+              <motion.div
                 className="flex flex-col sm:flex-row gap-4 mb-8"
                 variants={fadeInUp}
               >
-                <Button 
-                  size="lg" 
+                <Button
+                  size="lg"
                   className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-8 py-4 text-lg rounded-xl shadow-lg group"
                 >
                   Get Started Today
                   <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
-                
-                <Button 
-                  variant="outline" 
-                  size="lg" 
+
+                <Button
+                  variant="outline"
+                  size="lg"
                   className="px-8 py-4 text-lg rounded-xl border-2 border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500 group bg-white dark:bg-gray-800 shadow-lg"
                 >
                   <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
@@ -323,7 +320,7 @@ export function SimpleHomePage() {
             </div>
 
             {/* Right Column - Healthcare Illustration */}
-            <motion.div 
+            <motion.div
               className="relative"
               variants={fadeInUp}
             >
@@ -336,7 +333,7 @@ export function SimpleHomePage() {
                         <h3 className="text-xl font-bold text-gray-900 dark:text-white">AI Health Monitor</h3>
                         <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
                       </div>
-                      
+
                       <div className="space-y-4">
                         <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-xl">
                           <div className="flex items-center justify-between mb-2">
@@ -344,7 +341,7 @@ export function SimpleHomePage() {
                             <span className="text-lg font-bold text-green-600 dark:text-green-400">Low Risk</span>
                           </div>
                           <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
-                            <motion.div 
+                            <motion.div
                               className="bg-gradient-to-r from-green-500 to-emerald-500 h-2 rounded-full"
                               initial={{ width: 0 }}
                               animate={{ width: "75%" }}
@@ -359,7 +356,7 @@ export function SimpleHomePage() {
                             <span className="text-lg font-bold text-blue-600 dark:text-blue-400">92%</span>
                           </div>
                           <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
-                            <motion.div 
+                            <motion.div
                               className="bg-gradient-to-r from-blue-500 to-cyan-500 h-2 rounded-full"
                               initial={{ width: 0 }}
                               animate={{ width: "92%" }}
@@ -374,7 +371,7 @@ export function SimpleHomePage() {
                             <span className="text-lg font-bold text-purple-600 dark:text-purple-400">Excellent</span>
                           </div>
                           <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
-                            <motion.div 
+                            <motion.div
                               className="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full"
                               initial={{ width: 0 }}
                               animate={{ width: "88%" }}
@@ -402,7 +399,7 @@ export function SimpleHomePage() {
       </motion.section>
 
       {/* About the Platform Section */}
-      <motion.section 
+      <motion.section
         className="py-20 bg-white dark:bg-gray-900 min-h-[600px]"
         initial="hidden"
         whileInView="visible"
@@ -410,7 +407,7 @@ export function SimpleHomePage() {
         variants={staggerContainer}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             className="text-center mb-16"
             variants={fadeInUp}
           >
@@ -418,7 +415,7 @@ export function SimpleHomePage() {
               About Our Platform
             </h2>
             <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-              We're on a mission to revolutionize cancer pain management through artificial intelligence, 
+              We're on a mission to revolutionize cancer pain management through artificial intelligence,
               providing healthcare providers and patients with the tools they need for better outcomes.
             </p>
           </motion.div>
@@ -448,7 +445,7 @@ export function SimpleHomePage() {
       </motion.section>
 
       {/* Key Features Section */}
-      <motion.section 
+      <motion.section
         className="py-20 bg-gray-50 dark:bg-gray-800 min-h-[700px]"
         initial="hidden"
         whileInView="visible"
@@ -456,7 +453,7 @@ export function SimpleHomePage() {
         variants={staggerContainer}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             className="text-center mb-16"
             variants={fadeInUp}
           >
@@ -495,7 +492,7 @@ export function SimpleHomePage() {
       </motion.section>
 
       {/* How It Works Section */}
-      <motion.section 
+      <motion.section
         className="py-20 bg-white dark:bg-gray-900 min-h-[800px]"
         initial="hidden"
         whileInView="visible"
@@ -503,7 +500,7 @@ export function SimpleHomePage() {
         variants={staggerContainer}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             className="text-center mb-16"
             variants={fadeInUp}
           >
@@ -518,13 +515,12 @@ export function SimpleHomePage() {
           <div className="relative">
             {/* Timeline */}
             <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-green-200 to-emerald-200 dark:from-green-800 dark:to-emerald-800"></div>
-            
+
             {howItWorksSteps.map((step, index) => (
               <motion.div
                 key={step.step}
-                className={`relative grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16 items-center ${
-                  index % 2 === 0 ? '' : 'lg:grid-flow-col-dense'
-                }`}
+                className={`relative grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16 items-center ${index % 2 === 0 ? '' : 'lg:grid-flow-col-dense'
+                  }`}
                 variants={fadeInUp}
                 transition={{ delay: index * 0.2 }}
               >
@@ -560,7 +556,7 @@ export function SimpleHomePage() {
       </motion.section>
 
       {/* Impact/Stats Section */}
-      <motion.section 
+      <motion.section
         className="py-20 bg-gradient-to-r from-gray-800 to-gray-900 dark:from-gray-900 dark:to-black min-h-[600px]"
         initial="hidden"
         whileInView="visible"
@@ -568,7 +564,7 @@ export function SimpleHomePage() {
         variants={staggerContainer}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             className="text-center mb-16"
             variants={fadeInUp}
           >
@@ -600,7 +596,7 @@ export function SimpleHomePage() {
       </motion.section>
 
       {/* Testimonials Section */}
-      <motion.section 
+      <motion.section
         className="py-20 bg-gray-50 dark:bg-gray-800 min-h-[600px]"
         initial="hidden"
         whileInView="visible"
@@ -608,7 +604,7 @@ export function SimpleHomePage() {
         variants={staggerContainer}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             className="text-center mb-16"
             variants={fadeInUp}
           >
@@ -622,8 +618,8 @@ export function SimpleHomePage() {
 
           <div className="relative">
             <div className="overflow-hidden">
-              <motion.div 
-                className="flex transition-transform duration-500 ease-in-out" 
+              <motion.div
+                className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
                 variants={fadeInUp}
               >
@@ -666,17 +662,16 @@ export function SimpleHomePage() {
               >
                 <ChevronLeft className="w-5 h-5" />
               </Button>
-              
+
               <div className="flex space-x-2">
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentTestimonial(index)}
-                    className={`w-3 h-3 rounded-full transition-colors ${
-                      index === currentTestimonial 
-                        ? 'bg-green-500 dark:bg-green-400' 
+                    className={`w-3 h-3 rounded-full transition-colors ${index === currentTestimonial
+                        ? 'bg-green-500 dark:bg-green-400'
                         : 'bg-gray-300 dark:bg-gray-600'
-                    }`}
+                      }`}
                   />
                 ))}
               </div>
@@ -695,7 +690,7 @@ export function SimpleHomePage() {
       </motion.section>
 
       {/* Call-to-Action Footer */}
-      <motion.section 
+      <motion.section
         className="py-20 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 dark:from-gray-900 dark:via-gray-800 dark:to-black relative overflow-hidden"
         initial="hidden"
         whileInView="visible"
@@ -708,42 +703,42 @@ export function SimpleHomePage() {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <motion.h2 
+          <motion.h2
             className="text-4xl md:text-5xl font-bold mb-6 text-white"
             variants={fadeInUp}
           >
             Get Started Today
           </motion.h2>
-          <motion.p 
+          <motion.p
             className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed"
             variants={fadeInUp}
           >
-            Join thousands of healthcare providers and patients who are already experiencing 
+            Join thousands of healthcare providers and patients who are already experiencing
             better outcomes with our AI-powered platform.
           </motion.p>
-          
-          <motion.div 
+
+          <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"
             variants={fadeInUp}
           >
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white px-12 py-4 text-lg rounded-xl shadow-2xl group"
             >
               Start Free Trial
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            
-            <Button 
-              variant="outline" 
-              size="lg" 
+
+            <Button
+              variant="outline"
+              size="lg"
               className="px-12 py-4 text-lg rounded-xl border-2 border-white text-white hover:bg-white hover:text-gray-900 shadow-2xl"
             >
               Schedule Demo
             </Button>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="flex items-center justify-center space-x-8 text-sm text-gray-400"
             variants={fadeInUp}
           >
