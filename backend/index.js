@@ -1,8 +1,9 @@
 import express from 'express';
 import cors from 'cors';
-import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import jwt from 'jsonwebtoken';
+// jwt import removed (unused)
+import connectDB from './config/db.js';
+import corsOptions from './config/cors.js';
 
 // Load environment variables
 dotenv.config();
@@ -11,55 +12,8 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// MongoDB connection function
-const connectDB = async () => {
-  try {
-    // You'll need to add your MongoDB URI to .env file
-    const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/painsense';
-    
-    await mongoose.connect(MONGO_URI);
-    
-    console.log('MongoDB connected successfully');
-  } catch (error) {
-    console.error('MongoDB connection failed:', error.message);
-    // Exit process with failure
-    process.exit(1);
-  }
-};
-
 // Connect to MongoDB
 connectDB();
-
-// CORS configuration with detailed options
-const corsOptions = {
-  origin: function (origin, callback) {
-    console.log(`Request origin: ${origin || 'No origin (same origin)'}`);
-    
-    // Allowed origins
-    const allowedOrigins = [
-      'http://localhost:3000',
-      'https://localhost:3000',
-      'https://dr-help-2.vercel.app',
-      'https://dr-help-2-git-main-rakshi2609.vercel.app', // Git branch preview
-      'https://dr-help-2-rakshi2609.vercel.app' // Alternative Vercel domain
-    ];
-    
-    // Allow requests with no origin (mobile apps, Postman, etc.)
-    if (!origin) return callback(null, true);
-    
-    // Check if origin is in allowed list
-    if (allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      console.warn(`CORS blocked origin: ${origin}`);
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token', 'Cache-Control', 'X-Requested-With'],
-  exposedHeaders: ['x-auth-token']
-};
 
 // Middleware
 app.use(cors(corsOptions));
@@ -87,7 +41,7 @@ app.get('/', (req, res) => {
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
-  res.status(200).json({ 
+  res.status(200).json({
     status: 'UP',
     timestamp: new Date().toISOString()
   });
